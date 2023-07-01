@@ -35,11 +35,11 @@ urlpatterns = [
 
     path('add_product', views.add_products, name='add_product'),
 
-    path('supplier_detail/<int:supplier_id>/', views.supplier_detail, name='supplier_detail')
-    #
-    # path('supplier_card/<str:supplier_card_id>', views.supplier_card, name = "add_supplier_card"),
-    #
-    # path('edit_supplier_card', views.edit_supplier_card, name = "edit_supplier_card"),
+    path('supplier_detail/<int:supplier_id>/', views.supplier_detail, name='supplier_detail'),
+
+    path('edit_supplier_card/<int:supplier_id>', views.edit_supplier_card, name = "edit_supplier_card"),
+
+    path('edit_product/<int:product_id>', views.edit_product, name="edit_product"),
     #
     # path('delete_supplier_card', views.delete_supplier_card, name = "delete_supplier_card")
 ]
