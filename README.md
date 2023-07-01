@@ -8,5 +8,6 @@
 ![image](https://github.com/DTaSchweppes/selector-app-django/assets/45369246/631ac5b2-f26d-4b97-9ab0-9b38b3eacef6)
 В проекте присутствуют кастомные формы для добавления, редактирования всех сущностей (категория, товар, карточка поставщика) (**шаблон еще не конечный**):
 
-![image](https://github.com/DTaSchweppes/selector-app-django/assets/45369246/c9fbb692-64c4-4c2e-a381-89b102883f04)
+![image](https://github.com/DTaSchweppes/selector-app-django/assets/45369246/b8b5c0aa-69e0-4d58-b007-2907ff025f62)
+
 
