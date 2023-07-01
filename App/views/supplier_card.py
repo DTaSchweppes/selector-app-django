@@ -2,13 +2,6 @@ from django.shortcuts import render, redirect
 from App.models import SupplierCard
 from ..forms import SupplierCardForm
 
-def home(request):
-    from django.db import connection
-
-    table_names = connection.introspection.table_names()
-    print(table_names)
-    result = SupplierCard.objects.all().order_by('-created_at')
-    return render(request, 'home.html', {'supplier_cards': result})
 
 def supplier_card_list(request):
     supplier_cards = SupplierCard.objects.all()
@@ -24,3 +17,8 @@ def add_supplier_card(request):
     else:
         form = SupplierCardForm()
     return render(request, 'supcard/add.html', {'form': form})
+
+def supplier_detail(request, supplier_id):
+    if request.method == 'GET':
+        supplier_card = SupplierCard.objects.get(id=supplier_id)
+        return render(request, 'supcard/supcard.html', {'supplier_card':supplier_card})

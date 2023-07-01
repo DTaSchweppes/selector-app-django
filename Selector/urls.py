@@ -21,7 +21,7 @@ from App import views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', views.home, name = "home"),
+    path('', views.products_list, name = "home"),
 
     path('add_supplier_card', views.add_supplier_card, name = "add_supplier_card"),
 
@@ -29,7 +29,13 @@ urlpatterns = [
 
     path('categories', views.category_list, name='category_list'),
 
-    path('suppliers', views.supplier_card_list, name='supplier_card_list')
+    path('suppliers', views.supplier_card_list, name='supplier_card_list'),
+
+    path('products', views.products_list, name='products_list'),
+
+    path('add_product', views.add_products, name='add_product'),
+
+    path('supplier_detail/<int:supplier_id>/', views.supplier_detail, name='supplier_detail')
     #
     # path('supplier_card/<str:supplier_card_id>', views.supplier_card, name = "add_supplier_card"),
     #

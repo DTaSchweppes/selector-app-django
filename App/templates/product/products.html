@@ -1,10 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block content %}
+    <style>
+        .product-item {
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+
+        .supplier-list {
+        }
+
+        .supplier-item {
+            border-radius: 20px;
+            margin-bottom: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        </style>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            {% for product in products %}
+                <div class="product-item">
+                    <p>{{ product.name }}</p>
+                    <p>Category: {{ product.category_id }}</p>
+                   <div class="supplier-list"> {% for supplier_card in product.suppliers_id.all %}
+                       <a href="{% url 'supplier_detail' supplier_card.id %}">
+                           <div class="supplier-item p-2 {% if supplier_card.rating == 'low' %}bg-danger{% elif supplier_card.rating == 'medium' %}bg-warning{% else %}bg-success{% endif %} text-white">
+                             {{ supplier_card.name }}
+                            </div>
+                        </a>
+                           {% endfor %}
+                        </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Add Supplier Card</h2>
+    <h2>Добавление карточки поставщика</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

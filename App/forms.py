@@ -1,5 +1,5 @@
 from django import forms
-from .models import SupplierCard, Category
+from .models import SupplierCard, Category, Product
 
 class SupplierCardForm(forms.ModelForm):
     class Meta:
@@ -9,4 +9,9 @@ class SupplierCardForm(forms.ModelForm):
 class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
+        fields = '__all__'
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
         fields = '__all__'
