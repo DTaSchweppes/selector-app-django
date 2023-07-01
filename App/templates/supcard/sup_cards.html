@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h1 class="text-center">Supplier Cards</h1>
+
+    <div class="row justify-content-center">
+      {% if supplier_cards %}
+        {% for supplier_card in supplier_cards %}
+          <div class="col-md-6">
+            <div class="card mb-3 {% if supplier_card.rating == 'low' %}bg-danger{% elif supplier_card.rating == 'medium' %}bg-warning{% else %}bg-success{% endif %} text-white">
+              <div class="card-body">
+                <h5 class="card-title">{{ supplier_card.name }}</h5>
+                <hr class="bg-white">
+                <p class="card-text"><strong>ID:</strong> {{ supplier_card.id }}</p>
+                <p class="card-text"><strong>Address:</strong> {{ supplier_card.address }}</p>
+                <p class="card-text"><strong>Rating:</strong> {{ supplier_card.get_rating_display }}</p>
+                <p class="card-text"><strong>Categories:</strong> {% for categ in supplier_card.categories.all  %} {{categ}}/ {% endfor %}</p>
+                <p class="card-text"><strong>Contacts:</strong> {{ supplier_card.contacts }}</p>
+                <p class="card-text"><strong>Description:</strong> {{ supplier_card.description }}</p>
+                <!-- Add more fields here as needed -->
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="col-md-6">
+          <p class="text-center">No supplier cards found.</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

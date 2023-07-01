@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h1 class="h3 mt-4 mb-3">Categories</h1>
+
+    {% if categories %}
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <!-- Add more fields here as needed -->
+          </tr>
+        </thead>
+        <tbody>
+          {% for category in categories %}
+            <tr>
+              <td>{{ category.id }}</td>
+              <td>{{ category.name }}</td>
+              <!-- Render additional fields here -->
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No categories found.</p>
+    {% endif %}
+  </div>
+{% endblock %}
