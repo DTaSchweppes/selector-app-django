@@ -56,12 +56,14 @@
 <body>
     <div class="search-panel">
         <a class="button-link" href="{% url 'home' %}"><h1 class="selector-block">Selector</h1></a>
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search">
-            <button class="btn btn-primary btn-search" type="button">
+        <form class="input-group" method="GET" action="{% url 'search_product' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="text" name="query" class="form-control" placeholder="Search">
+            <button class="btn btn-primary btn-search" type="submit">
                 <i class="bi bi-search"></i>
             </button>
-        </div>
+        </form>
     </div>
     {% block content %}
     {% endblock %}

@@ -40,6 +40,10 @@ urlpatterns = [
     path('edit_supplier_card/<int:supplier_id>', views.edit_supplier_card, name = "edit_supplier_card"),
 
     path('edit_product/<int:product_id>', views.edit_product, name="edit_product"),
+
+    path('search', views.shearch_product, name="search_product"),
+
+    path('products2/<int:page>', views.products_list2, name="prod2")
     #
     # path('delete_supplier_card', views.delete_supplier_card, name = "delete_supplier_card")
 ]
