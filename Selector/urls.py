@@ -43,7 +43,6 @@ urlpatterns = [
 
     path('search', views.shearch_product, name="search_product"),
 
-    path('products2/<int:page>', views.products_list2, name="prod2")
     #
     # path('delete_supplier_card', views.delete_supplier_card, name = "delete_supplier_card")
 ]

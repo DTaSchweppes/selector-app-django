@@ -1,14 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from App.models import Product
 from ..forms import ProductForm
-from django.db.models import Func, Value
 from django.core.paginator import Paginator
-
-class Lower(Func):
-    function = 'LOWER'
-def products_list(request):
-    products = Product.objects.all()
-    return render(request, 'product/products.html', {"products": products})
 
 
 def add_products(request):
@@ -20,6 +13,7 @@ def add_products(request):
     else:
         form = ProductForm()
     return render(request, 'product/add.html', {'form': form})
+
 
 def edit_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
@@ -33,16 +27,18 @@ def edit_product(request, product_id):
         form = ProductForm(instance=product)
     return render(request, 'product/edit.html', {'form': form, 'product': product})
 
+
 def shearch_product(request):
-    #https://django.fun/ru/docs/django/4.1/ref/contrib/postgres/search/
+    # https://django.fun/ru/docs/django/4.1/ref/contrib/postgres/search/
     query = request.GET.get('query')
     results = Product.objects.filter(name__iregex=query)
 
-    return render(request, 'product/search_results.html', {"results":results})
+    return render(request, 'product/search_results.html', {"results": results})
 
-def products_list2(request, page):
+
+def products_list(request):
     all_objects = Product.objects.all()
-    paginator = Paginator(all_objects, 10)
+    paginator = Paginator(all_objects, 3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'product/products2.html', {'page_obj': page_obj})
+    return render(request, 'product/products.html', {'page_obj': page_obj})

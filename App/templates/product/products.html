@@ -19,11 +19,31 @@
             text-align: center;
             cursor: pointer;
         }
+        .pagination {
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+        }
+
+        .pagination .step-links a {
+          margin: 0 5px;
+          padding: 5px 10px;
+          border: 1px solid #ccc;
+          border-radius: 3px;
+          text-decoration: none;
+          color: #333;
+        }
+
+        .pagination .current-page {
+          font-weight: bold;
+          color: #fff;
+          background-color: #333;
+        }
         </style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            {% for product in products %}
+            {% for product in page_obj %}
                 <div class="product-item">
                     <p>{{ product.name }}</p>
                     <p>Category: {{ product.category_id }}</p>
@@ -39,6 +59,22 @@
             {% endfor %}
         </div>
     </div>
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo;</a>
+            <a href="?page={{ page_obj.previous_page_number }}"><</a>
+        {% endif %}
+
+        <span class="current-page">{{ page_obj.number }}</span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">></a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
+        {% endif %}
+    </span>
 </div>
 
 {% endblock %}
